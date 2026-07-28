@@ -18,32 +18,34 @@
   --font:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
   --accent:var(--pink); --accent-soft:var(--pink-light); --accent-deep:var(--pink-deep);
 }
-body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-tap-highlight-color:transparent;}
+body{font-family:var(--font);background-color:#fff0f5;background-image:radial-gradient(#ffcce0 1.5px,transparent 1.5px);background-size:18px 18px;background-attachment:fixed;color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-tap-highlight-color:transparent;}
 
 /* ========== Layout ========== */
-.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-width);background:linear-gradient(180deg,#ffe8ee 0%,#ffd6e0 50%,#ffe0e8 100%);z-index:100;overflow-y:auto;display:flex;flex-direction:column;box-shadow:2px 0 20px rgba(228,150,180,0.12);transition:transform .3s cubic-bezier(.4,0,.2,1);}
-.sidebar-logo{padding:24px 16px 8px;text-align:center;border-bottom:1px solid rgba(228,150,180,0.2);}
+.sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sidebar-width);background:linear-gradient(180deg,#fff5f8 0%,#ffe8f0 50%,#fff0f5 100%);z-index:100;overflow-y:auto;display:flex;flex-direction:column;box-shadow:2px 0 24px rgba(228,150,180,0.18);transition:transform .3s cubic-bezier(.4,0,.2,1);}
+.sidebar-logo{padding:18px 16px 12px;text-align:center;border-bottom:1px solid rgba(228,150,180,0.18);}
 .sidebar-logo .logo-icon{font-size:38px;display:block;margin-bottom:4px;}
-.sidebar-logo .logo-text{font-size:18px;font-weight:700;color:var(--pink-deep);}
-.sidebar-logo .logo-sub{font-size:11px;color:var(--pink-mid);margin-top:2px;}
-.sidebar-nav{flex:1;padding:8px 0;}
-.nav-item{display:flex;align-items:center;gap:11px;padding:11px 14px;margin:4px 10px;border-radius:14px;cursor:pointer;color:var(--text-secondary);font-size:14px;font-weight:500;transition:all .2s;border:none;background:none;width:calc(100% - 20px);text-align:left;border-left:3px solid transparent;}
+.sidebar-logo .logo-text{font-size:17px;font-weight:800;color:var(--pink-deep);letter-spacing:1px;}
+.sidebar-logo .logo-sub{font-size:11px;color:var(--pink-mid);margin-top:3px;}
+.sidebar-avatar{width:64px;height:64px;margin:0 auto 10px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(228,150,180,0.25);position:relative;}
+.sidebar-avatar::after{content:'';position:absolute;right:-2px;bottom:4px;width:18px;height:18px;background:var(--pink-mid);border-radius:50% 50% 50% 5px;transform:rotate(-45deg);box-shadow:0 2px 5px rgba(228,150,180,0.3);}
+.sidebar-nav{flex:1;padding:10px 0;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 14px;margin:5px 12px;border-radius:16px;cursor:pointer;color:var(--text-secondary);font-size:13px;font-weight:500;transition:all .2s;border:none;background:none;width:calc(100% - 24px);text-align:left;}
 .nav-item:hover{background:var(--ncs,var(--pink-light));color:var(--nc,var(--pink-deep));transform:translateX(3px);}
-.nav-item.active{background:var(--ncs,var(--pink-light));color:var(--nc,var(--pink-deep));font-weight:700;box-shadow:0 2px 10px rgba(228,150,180,0.2);border-left:3px solid var(--nc,var(--pink-deep));}
-.nav-item .nav-badge{font-size:15px;width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--ncs,var(--pink-light));flex-shrink:0;transition:all .2s;box-shadow:0 2px 6px rgba(228,150,180,0.18);}
-.nav-item.active .nav-badge{background:linear-gradient(135deg,var(--nc,var(--pink)),var(--ncd,var(--pink-deep)));transform:scale(1.05);}
+.nav-item.active{background:linear-gradient(135deg,var(--ncs,var(--pink-light)),#fff);color:var(--nc,var(--pink-deep));font-weight:700;box-shadow:0 2px 10px rgba(228,150,180,0.18);}
+.nav-item .nav-badge{font-size:20px;width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:#fff;flex-shrink:0;transition:all .2s;box-shadow:0 2px 6px rgba(228,150,180,0.12);}
+.nav-item.active .nav-badge{background:linear-gradient(135deg,var(--nc,var(--pink)),var(--ncd,var(--pink-deep)));transform:scale(1.05);box-shadow:0 4px 10px rgba(228,150,180,0.25);}
 .nav-item .nav-label{flex:1;line-height:1.3;}
 .nav-item .nav-icon{font-size:18px;width:24px;text-align:center;flex-shrink:0;}
 
 .main-content{margin-left:var(--sidebar-width);min-height:100vh;transition:margin .3s cubic-bezier(.4,0,.2,1);}
-.page{padding:28px 32px;max-width:900px;display:none;animation:fadeIn .35s ease;}
+.page{padding:28px 32px;max-width:760px;margin:0 auto;display:none;animation:fadeIn .35s ease;}
 .page.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 
 /* ========== Mobile Header ========== */
-.mobile-header{display:none;position:fixed;top:0;left:0;right:0;z-index:99;background:linear-gradient(135deg,#fce4ec,#f8bbd0);padding:12px 16px;box-shadow:0 2px 12px rgba(228,150,180,0.15);align-items:center;gap:12px;}
+.mobile-header{display:none;position:fixed;top:0;left:0;right:0;z-index:99;background:linear-gradient(135deg,#fff5f8,#ffd6e5);padding:12px 16px;box-shadow:0 2px 12px rgba(228,150,180,0.15);align-items:center;gap:12px;}
 .mobile-header .hamburger{font-size:24px;background:none;border:none;color:var(--pink-deep);cursor:pointer;padding:4px 8px;border-radius:8px;flex-shrink:0;}
-.mobile-header .mobile-title{font-size:16px;font-weight:700;color:var(--pink-deep);flex:1;text-align:center;}
+.mobile-header .mobile-title{font-size:17px;font-weight:800;color:var(--pink-deep);flex:1;text-align:center;letter-spacing:1px;}
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:98;transition:opacity .3s;}
 .overlay.show{display:block;}
 .img-lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;align-items:center;justify-content:center;flex-direction:column;padding:20px;}
@@ -53,6 +55,31 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .img-lightbox-close:hover{background:rgba(255,255,255,0.32);transform:scale(1.06);}
 .img-lightbox-hint{position:absolute;bottom:22px;color:rgba(255,255,255,0.65);font-size:12px;}
 .sidebar-close{display:none;position:absolute;top:12px;right:12px;font-size:22px;background:none;border:none;color:var(--pink-deep);cursor:pointer;padding:4px 8px;border-radius:8px;}
+
+/* ========== Hello Kitty Theme ========== */
+.kitty-logo{position:relative;width:74px;height:66px;margin:0 auto 6px;}
+.kitty-logo .ear{position:absolute;top:8px;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:26px solid #fff;border-radius:3px;box-shadow:0 1px 3px rgba(228,150,180,0.25);}
+.kitty-logo .ear.l{left:7px;transform:rotate(-20deg);}
+.kitty-logo .ear.r{right:7px;transform:rotate(20deg);}
+.kitty-logo .ear::after{content:'';position:absolute;top:9px;left:-7px;width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid var(--pink-light);}
+.kitty-logo .face{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:58px;height:52px;background:#fff;border-radius:50%;box-shadow:0 3px 10px rgba(228,150,180,0.28);}
+.kitty-logo .eye{position:absolute;top:22px;width:5px;height:7px;background:#3a2a33;border-radius:50%;}
+.kitty-logo .eye.l{left:19px;}
+.kitty-logo .eye.r{right:19px;}
+.kitty-logo .nose{position:absolute;top:32px;left:50%;transform:translateX(-50%);width:6px;height:4px;background:var(--pink-deep);border-radius:50%;}
+.kitty-logo .whisker{position:absolute;top:34px;width:14px;height:1px;background:rgba(58,42,51,0.4);}
+.kitty-logo .whisker.l{left:2px;transform:rotate(8deg);}
+.kitty-logo .whisker.r{right:2px;transform:rotate(-8deg);}
+.kitty-bow{position:relative;display:inline-block;width:34px;height:22px;flex-shrink:0;}
+.kitty-bow .bl,.kitty-bow .br{position:absolute;top:3px;width:13px;height:16px;background:var(--pink-mid);}
+.kitty-bow .bl{left:1px;border-radius:60% 40% 50% 50%/70% 30% 50% 50%;transform:rotate(-8deg);}
+.kitty-bow .br{right:1px;border-radius:40% 60% 50% 50%/30% 70% 50% 50%;transform:rotate(8deg);}
+.kitty-bow .bk{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;background:var(--pink-deep);border-radius:50%;box-shadow:0 0 0 2px #fff;z-index:2;}
+.kh-bow{margin-right:6px;flex-shrink:0;}
+.kh-bow-m{margin-right:8px;flex-shrink:0;}
+.page-header{border-radius:22px !important;box-shadow:0 6px 22px rgba(228,150,180,0.18) !important;}
+.card{border-radius:20px !important;box-shadow:0 4px 18px rgba(228,150,180,0.14) !important;}
+.nav-item.active{background:linear-gradient(135deg,var(--ncs,var(--pink-light)),#fff) !important;}
 
 /* ========== Components ========== */
 .card{background:var(--card-bg);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);margin-bottom:18px;border:1px solid rgba(228,150,180,0.1);border-top:3px solid var(--accent);}
@@ -113,6 +140,28 @@ input[type="date"],input[type="time"]{cursor:pointer;}
 .task-drag-handle{color:#ddd;font-size:14px;cursor:grab;flex-shrink:0;padding:0 4px;}
 .empty-hint{text-align:center;color:var(--text-muted);font-size:13px;padding:20px;}
 
+/* ========== Daily Plan ========== */
+.dl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;}
+.dl-stat{text-align:center;padding:12px 6px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent-soft),#fff);border:1px solid var(--accent-soft);}
+.dl-stat-val{font-size:22px;font-weight:800;color:var(--accent-deep);line-height:1;}
+.dl-stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+.dl-add-row{display:flex;gap:8px;margin-bottom:14px;align-items:center;}
+.dl-add-row .dl-time-input{flex:0 0 90px;padding:10px;border-radius:var(--radius-xs);border:1px solid var(--pink-light);font-size:14px;background:#fff;}
+.dl-add-row .dl-text-input{flex:1;min-width:120px;padding:10px 12px;border-radius:var(--radius-xs);border:1px solid var(--pink-light);font-size:14px;background:#fff;}
+.dl-time-badge{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;min-width:48px;padding:4px 8px;border-radius:10px;background:var(--accent-soft);color:var(--accent-deep);font-size:12px;font-weight:600;margin-right:4px;}
+.task-item.dl-overdue .dl-time-badge{background:#ffebee;color:#c62828;}
+.task-item.dl-overdue .task-text{color:#c62828;}
+.dl-overdue-tag{font-size:11px;color:#fff;background:#ef5350;padding:2px 6px;border-radius:8px;flex-shrink:0;margin-left:auto;margin-right:6px;}
+@media (max-width:480px){
+  .dl-stats{gap:6px;}
+  .dl-stat{padding:10px 4px;}
+  .dl-stat-val{font-size:18px;}
+  .dl-stat-label{font-size:11px;}
+  .dl-add-row{flex-wrap:wrap;}
+  .dl-add-row .dl-time-input{flex:0 0 80px;}
+  .dl-add-row .dl-text-input{flex:1;min-width:160px;}
+}
+
 /* ========== Checkin Tags ========== */
 .checkin-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
 .checkin-tag{padding:8px 16px;border-radius:20px;border:2px solid var(--pink-light);cursor:pointer;font-size:13px;font-weight:500;color:var(--text-secondary);background:#fff;transition:all .2s;user-select:none;}
@@ -129,6 +178,67 @@ input[type="date"],input[type="time"]{cursor:pointer;}
 .spending-table th{background:var(--accent-soft);color:var(--accent-deep);padding:8px 10px;text-align:left;font-weight:600;}
 .spending-table td{padding:8px 10px;border-bottom:1px solid var(--pink-light);}
 .spending-table .amount{font-weight:600;color:var(--pink-accent);}
+
+/* ========== Bookkeeping ========== */
+.bk-total-card{text-align:center;padding:18px 12px;margin-bottom:14px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#fce4ec,#fff0f5);border:1px solid var(--pink-light);}
+.bk-total-label{font-size:13px;color:var(--text-muted);margin-bottom:4px;}
+.bk-total-val{font-size:30px;font-weight:800;color:var(--pink-accent);}
+.bk-summary-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.bk-summary-item{text-align:center;padding:12px 6px;border-radius:var(--radius-sm);background:#fff;border:1px solid var(--pink-light);}
+.bk-si-val{font-size:16px;font-weight:700;}
+.bk-si-val.income{color:#43a047;}
+.bk-si-val.expense{color:#e53935;}
+.bk-si-label{font-size:11px;color:var(--text-muted);margin-top:4px;}
+.bk-form-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.bk-form-row input,.bk-form-row select{flex:1;min-width:80px;padding:8px;border-radius:var(--radius-xs);border:1px solid var(--pink-light);font-size:13px;background:#fff;}
+.bk-account-row{display:flex;align-items:center;gap:8px;padding:10px 12px;margin-bottom:6px;background:#fff;border-radius:var(--radius-xs);border:1px solid var(--pink-light);}
+.bk-account-icon{font-size:18px;}
+.bk-account-name{flex:1;font-size:14px;}
+.bk-account-balance{font-size:15px;font-weight:700;color:var(--text);}
+.bk-trans-row{display:flex;align-items:center;gap:8px;padding:10px 12px;margin-bottom:6px;background:#fff;border-radius:var(--radius-xs);border:1px solid var(--pink-light);flex-wrap:wrap;}
+.bk-trans-date{font-size:12px;color:var(--text-muted);white-space:nowrap;}
+.bk-trans-type{font-size:11px;padding:2px 6px;border-radius:8px;color:#fff;}
+.bk-trans-type.income{background:#66bb6a;}
+.bk-trans-type.expense{background:#ef5350;}
+.bk-trans-account{flex:1;font-size:13px;min-width:80px;}
+.bk-trans-note{font-size:12px;color:var(--text-muted);flex:1;min-width:80px;}
+.bk-trans-amount{font-weight:700;}
+.bk-trans-amount.income{color:#43a047;}
+.bk-trans-amount.expense{color:#e53935;}
+@media (max-width:480px){
+  .bk-summary-row{gap:6px;}
+  .bk-summary-item{padding:10px 4px;}
+  .bk-total-val{font-size:24px;}
+  .bk-form-row input,.bk-form-row select{min-width:70px;}
+}
+
+/* ========== Finance Stats ========== */
+.fs-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:16px;}
+.fs-tab{flex:1;max-width:90px;padding:8px 6px;border-radius:18px;border:1px solid var(--pink-light);background:#fff;color:var(--text-secondary);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font);}
+.fs-tab.active{background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;border-color:transparent;box-shadow:0 4px 12px rgba(228,150,180,0.25);}
+.fs-total{text-align:center;margin-bottom:16px;}
+.fs-total-label{font-size:12px;color:var(--text-muted);margin-bottom:4px;}
+.fs-total-val{font-size:32px;font-weight:800;color:var(--pink-accent);}
+.fs-chart-wrap{display:flex;align-items:center;gap:18px;margin-bottom:16px;}
+.fs-donut{flex:0 0 140px;height:140px;position:relative;}
+.fs-donut svg{width:100%;height:100%;transform:rotate(-90deg);}
+.fs-donut-center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+.fs-dc-label{font-size:11px;color:var(--text-muted);}
+.fs-dc-val{font-size:15px;font-weight:700;color:var(--text);}
+.fs-legend{flex:1;min-width:0;}
+.fs-legend-item{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:13px;}
+.fs-legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.fs-legend-name{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fs-legend-amount{font-weight:700;color:var(--text);}
+.fs-legend-pct{font-size:11px;color:var(--text-muted);min-width:36px;text-align:right;}
+.fs-empty{text-align:center;color:var(--text-muted);font-size:13px;padding:24px 0;}
+.fs-range{text-align:center;font-size:12px;color:var(--text-muted);margin-bottom:10px;}
+@media (max-width:480px){
+  .fs-chart-wrap{flex-direction:column;gap:12px;}
+  .fs-donut{flex:0 0 160px;width:160px;height:160px;}
+  .fs-legend{width:100%;}
+  .fs-total-val{font-size:28px;}
+}
 
 /* ========== Exercise Checkin ========== */
 .ex-stats-card{display:flex;align-items:center;gap:12px;padding:18px 16px;margin-bottom:14px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#8ec5fc,#e0c3fc);color:#fff;box-shadow:0 6px 18px rgba(142,197,252,.25);}
@@ -262,9 +372,9 @@ input[type="date"],input[type="time"]{cursor:pointer;}
   .sidebar-close{display:block;}
   .main-content{margin-left:0;padding-top:56px;}
   .page{padding:16px 12px;}
-  .page-header{padding:14px 16px;gap:12px;margin-bottom:14px;}
-  .page-header .ph-icon{width:44px;height:44px;font-size:23px;border-radius:13px;}
-  .page-header .ph-title{font-size:17px;}
+  .page-header{padding:16px 14px 14px;gap:8px;margin-bottom:14px;border-radius:20px;}
+  .page-header .ph-icon{width:46px;height:46px;font-size:24px;border-radius:14px;}
+  .page-header .ph-title{font-size:18px;}
   .clock-time{font-size:38px;}
   .spending-form,.task-input-row{flex-direction:column;}
   .spending-form input,.spending-form select{width:100%;}
@@ -287,11 +397,12 @@ input[type="date"],input[type="time"]{cursor:pointer;}
 }
 
 /* ========== Page Header ========== */
-.page-header{display:flex;align-items:center;gap:14px;padding:18px 20px;margin-bottom:18px;border-radius:var(--radius);background:linear-gradient(135deg,var(--accent-soft),#fff);border:1px solid var(--accent-soft);box-shadow:var(--shadow);}
-.page-header .ph-icon{font-size:28px;width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-deep));box-shadow:0 4px 14px rgba(228,150,180,0.28);flex-shrink:0;}
+.page-header{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:22px 20px 18px;margin-bottom:20px;border-radius:24px;background:linear-gradient(135deg,var(--accent-soft),#fff);border:1px solid var(--accent-soft);box-shadow:var(--shadow);text-align:center;position:relative;overflow:hidden;}
+.page-header::before{content:'';position:absolute;top:-40px;right:-30px;width:90px;height:90px;background:radial-gradient(circle,rgba(255,255,255,0.7) 0%,transparent 70%);border-radius:50%;}
+.page-header .ph-icon{font-size:34px;width:58px;height:58px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-deep));box-shadow:0 5px 16px rgba(228,150,180,0.3);flex-shrink:0;}
 .page-header .ph-text{flex:1;min-width:0;}
-.page-header .ph-title{font-size:20px;font-weight:800;color:var(--accent-deep);line-height:1.2;}
-.page-header .ph-sub{font-size:12.5px;color:var(--text-secondary);margin-top:3px;line-height:1.5;}
+.page-header .ph-title{font-size:22px;font-weight:800;color:var(--accent-deep);line-height:1.2;letter-spacing:1px;}
+.page-header .ph-sub{font-size:12.5px;color:var(--text-secondary);margin-top:2px;line-height:1.5;}
 
 /* ========== Backup ========== */
 .bk-list{list-style:none;}
@@ -315,6 +426,7 @@ img{max-width:100%;}
 <!-- Mobile Header -->
 <header class="mobile-header">
   <button class="hamburger" id="hamburgerBtn" aria-label="菜单">☰</button>
+  <span class="kitty-bow kh-bow-m"><span class="bl"></span><span class="br"></span><span class="bk"></span></span>
   <span class="mobile-title" id="mobileTitle">🌸 妮妮的工作台</span>
 </header>
 
@@ -332,7 +444,13 @@ img{max-width:100%;}
 <aside class="sidebar" id="sidebar">
   <button class="sidebar-close" id="sidebarClose">✕</button>
   <div class="sidebar-logo">
-    <span class="logo-icon">🌸</span>
+    <div class="sidebar-avatar">
+      <div class="kitty-logo" style="width:52px;height:46px;margin:0;">
+        <span class="ear l" style="top:6px;border-left-width:12px;border-right-width:12px;border-bottom-width:20px;left:6px;"></span>
+        <span class="ear r" style="top:6px;border-left-width:12px;border-right-width:12px;border-bottom-width:20px;right:6px;"></span>
+        <div class="face" style="width:44px;height:40px;"><span class="eye l" style="top:16px;left:14px;"></span><span class="eye r" style="top:16px;right:14px;"></span><span class="nose" style="top:25px;"></span><span class="whisker l" style="top:27px;left:3px;"></span><span class="whisker r" style="top:27px;right:3px;"></span></div>
+      </div>
+    </div>
     <div class="logo-text">妮妮的工作台</div>
     <div class="logo-sub">✨ 可爱每一天 ✨</div>
   </div>
@@ -349,7 +467,7 @@ const NAV_ITEMS = [
   {page:'dailylife',icon:'📋',label:'每日生活',color:'#f59e6b',soft:'#ffeede',deep:'#e07b3e'},
   {page:'exercise',icon:'💪',label:'锻炼身体',color:'#34c6a0',soft:'#dbf6ee',deep:'#1f9d7d'},
   {page:'growth',icon:'🌱',label:'个人成长',color:'#9b7ede',soft:'#ece3fa',deep:'#7a55c7'},
-  {page:'finance',icon:'💰',label:'理财及学习',color:'#e8b53a',soft:'#fdf3d3',deep:'#c8920f'},
+  {page:'finance',icon:'📒',label:'账本',color:'#e8b53a',soft:'#fdf3d3',deep:'#c8920f'},
   {page:'travel',icon:'✈️',label:'旅游计划',color:'#4db4e8',soft:'#dcefff',deep:'#2a93cf'},
   {page:'repayment',icon:'💸',label:'集美返款',color:'#f06a8a',soft:'#ffe1e8',deep:'#d6436a'},
   {page:'social',icon:'🤝',label:'人际关系',color:'#e07ab8',soft:'#fbe1f1',deep:'#c2538f'},
@@ -362,7 +480,7 @@ const PAGE_SUBTITLES = {
   dailylife:'记录每一天的计划、花费与心情',
   exercise:'动起来，遇见更好的自己',
   growth:'每天进步一点点，悄悄变厉害',
-  finance:'钱要花得明白，也要存得开心',
+  finance:'每一笔都清清楚楚 💕',
   travel:'世界那么大，想去看看 ✈️',
   repayment:'姐妹账本，清楚又安心',
   social:'用心经营每一段关系',
@@ -940,25 +1058,32 @@ function renderDailyLife() {
       <span class="date-nav-label" id="dlDateLabel"></span>
     </div>
     <div class="card">
-      <div class="card-title"><span class="ct-icon">📅</span> 每日计划 <span class="plan-progress" id="dlPlanProgress"></span></div>
-      <div class="task-input-row">
-        <input type="text" id="dlPlanInput" placeholder="任务内容..." onkeydown="if(event.key==='Enter')addDailyPlan()">
-        <input type="time" id="dlPlanStart" style="flex:0 0 110px;">
-        <input type="time" id="dlPlanEnd" style="flex:0 0 110px;">
+      <div class="card-title"><span class="ct-icon">📅</span> 每日计划</div>
+      <p class="text-muted" style="margin-bottom:12px;">把今天排清楚，再开始行动</p>
+      <div class="dl-stats" id="dlPlanStats">
+        <div class="dl-stat"><div class="dl-stat-val" id="dlStatTotal">0</div><div class="dl-stat-label">今日任务</div></div>
+        <div class="dl-stat"><div class="dl-stat-val" id="dlStatDone">0</div><div class="dl-stat-label">已完成</div></div>
+        <div class="dl-stat"><div class="dl-stat-val" id="dlStatPending">0</div><div class="dl-stat-label">待完成</div></div>
+        <div class="dl-stat"><div class="dl-stat-val" id="dlStatPct">0%</div><div class="dl-stat-label">完成率</div></div>
+      </div>
+      <div class="dl-add-row">
+        <input type="time" id="dlPlanTime" class="dl-time-input" value="09:00">
+        <input type="text" id="dlPlanInput" class="dl-text-input" placeholder="添加一个今天的任务..." onkeydown="if(event.key==='Enter')addDailyPlan()">
         <button class="btn btn-primary" onclick="addDailyPlan()">+ 添加</button>
       </div>
       <ul class="task-list" id="dlPlanList"></ul>
     </div>
     <div class="section-divider"></div>
     <div class="card">
-      <div class="card-title"><span class="ct-icon">💳</span> 每日花费</div>
+      <div class="card-title"><span class="ct-icon">💳</span> 每日花费 <span style="font-size:12px;font-weight:500;color:var(--text-muted);">· 自动同步到账本</span></div>
       <div class="spending-summary" id="spendingSummary"></div>
       <div class="spending-form">
-        <select id="spendCat" style="flex:0 0 120px;">
+        <select id="spendCat" style="flex:0 0 110px;">
           <option value="">选择类目</option>
           ${SPENDING_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join('')}
         </select>
-        <input type="number" id="spendAmount" placeholder="金额 ¥" min="0" step="0.01" style="flex:0 0 100px;">
+        <input type="number" id="spendAmount" placeholder="金额 ¥" min="0" step="0.01" style="flex:0 0 90px;">
+        <select id="spendAccount" style="flex:1;min-width:100px;"><option value="">扣款账户</option></select>
         <input type="text" id="spendNote" placeholder="备注（可选）" style="flex:1;min-width:100px;">
         <button class="btn btn-primary" onclick="addSpending()">+ 记账</button>
       </div>
@@ -992,12 +1117,12 @@ function renderDailyLife() {
 function getTodayShareData() {
   const d = viewDate;
   const plans = getByDate('daily_plans');
-  const allSpend = loadData('spending');
-  const spend = allSpend.filter(r => r.date === d);
+  const tx = getTransactions();
+  const spend = tx.filter(t => t.type === 'expense' && t.date === d);
   const reviews = getByDate('daily_reviews');
   const todayTotal = spend.reduce((s,r)=>s+(Number(r.amount)||0),0);
   const month = (d||'').slice(0,7);
-  const monthTotal = allSpend.filter(r=>r.date && r.date.startsWith(month)).reduce((s,r)=>s+(Number(r.amount)||0),0);
+  const monthTotal = tx.filter(t=>t.type==='expense'&&t.date && t.date.startsWith(month)).reduce((s,r)=>s+(Number(r.amount)||0),0);
   return {d, plans, spend, reviews, todayTotal, monthTotal};
 }
 
@@ -1184,14 +1309,13 @@ function downloadShareImage() {
 
 function addDailyPlan() {
   const textEl = document.getElementById('dlPlanInput');
-  const startEl = document.getElementById('dlPlanStart');
-  const endEl = document.getElementById('dlPlanEnd');
+  const timeEl = document.getElementById('dlPlanTime');
   const text = textEl.value.trim();
   if (!text) return;
   const plans = loadData('daily_plans');
-  plans.push({id:genId(),text,done:false,timeStart:startEl.value,timeEnd:endEl.value,date:viewDate});
+  plans.push({id:genId(),text,done:false,time:timeEl.value,date:viewDate});
   saveData('daily_plans', plans);
-  textEl.value = ''; startEl.value = ''; endEl.value = '';
+  textEl.value = '';
   renderDailyPlans();
 }
 
@@ -1199,27 +1323,42 @@ function renderDailyPlans() {
   const plans = getByDate('daily_plans');
   const list = document.getElementById('dlPlanList');
   if (!list) return;
-  // 当日完成进度
-  const prog = document.getElementById('dlPlanProgress');
   const total = plans.length;
   const done = plans.filter(p => p.done).length;
+  const pending = total - done;
   const pct = total ? Math.round(done/total*100) : 0;
-  if (prog) {
-    prog.innerHTML = total
-      ? `<span class="pp-bar"><span class="pp-fill" style="width:${pct}%"></span></span><span class="pp-text">${done}/${total} · ${pct}%</span>`
-      : '';
-  }
+  const statTotal = document.getElementById('dlStatTotal');
+  const statDone = document.getElementById('dlStatDone');
+  const statPending = document.getElementById('dlStatPending');
+  const statPct = document.getElementById('dlStatPct');
+  if (statTotal) statTotal.textContent = total;
+  if (statDone) statDone.textContent = done;
+  if (statPending) statPending.textContent = pending;
+  if (statPct) statPct.textContent = pct + '%';
+
   if (!plans.length) { list.innerHTML = '<div class="empty-hint">✨ 计划你今天要做的事情吧~</div>'; return; }
-  list.innerHTML = plans.map(t => `
-    <li class="task-item${t.done ? ' done' : ''}" draggable="true" data-id="${t.id}">
+
+  const today = getToday();
+  const nowHM = new Date().toTimeString().slice(0,5);
+  const sorted = plans.slice().sort((a,b) => {
+    const ta = a.time || a.timeStart || '99:99';
+    const tb = b.time || b.timeStart || '99:99';
+    return ta.localeCompare(tb);
+  });
+  list.innerHTML = sorted.map(t => {
+    const time = t.time || t.timeStart || '';
+    const isOverdue = !t.done && time && (viewDate < today || (viewDate === today && time < nowHM));
+    return `
+    <li class="task-item${t.done ? ' done' : ''}${isOverdue ? ' dl-overdue' : ''}" draggable="true" data-id="${t.id}">
       <span class="task-drag-handle">⠿</span>
       <span class="task-check" data-toggle="${t.id}">✓</span>
+      ${time ? `<span class="dl-time-badge">${time}</span>` : ''}
       <span class="task-text">${escapeHtml(t.text)}</span>
-      ${t.timeStart ? `<span class="task-meta">${t.timeStart}${t.timeEnd ? ' - '+t.timeEnd : ''}</span>` : ''}
+      ${isOverdue ? '<span class="dl-overdue-tag">逾期</span>' : ''}
       <button class="task-del" data-del="${t.id}">×</button>
     </li>
-  `).join('');
-  enableDragSort(list, plans, 'daily_plans', renderDailyPlans);
+  `}).join('');
+  enableDragSort(list, sorted, 'daily_plans', renderDailyPlans);
   setupTaskToggleByDate('dlPlanList', 'daily_plans', renderDailyPlans);
   setupTaskDeleteByDate('dlPlanList', 'daily_plans', renderDailyPlans);
 }
@@ -1227,56 +1366,100 @@ function renderDailyPlans() {
 function addSpending() {
   const cat = document.getElementById('spendCat').value;
   const amount = parseFloat(document.getElementById('spendAmount').value);
+  const accountId = document.getElementById('spendAccount').value;
   const note = document.getElementById('spendNote').value.trim();
   if (!cat || !amount || amount <= 0) { alert('请选择类目并填写金额~'); return; }
-  const records = loadData('spending');
-  records.push({id:genId(),cat,amount,note,time:getNowTime(),date:viewDate});
-  saveData('spending', records);
+  if (!accountId) { alert('请选择扣款账户~'); return; }
+  const accounts = getAccounts();
+  const acc = accounts.find(a => a.id === accountId);
+  if (!acc) return;
+  // 联动账本：扣减对应账户余额
+  acc.balance = (acc.balance || 0) - amount;
+  saveAccounts(accounts);
+  // 写入统一流水（与账本同源）
+  const transactions = getTransactions();
+  transactions.push({id:genId(), type:'expense', amount, accountId, cat, note, date: viewDate, createdAt: new Date().toISOString()});
+  saveTransactions(transactions);
   document.getElementById('spendCat').value = '';
   document.getElementById('spendAmount').value = '';
   document.getElementById('spendNote').value = '';
   renderSpending();
+  if (currentPage === 'finance') renderBookkeeping();
+}
+
+function migrateSpendingToTransactions() {
+  if (loadData('spending_migrated')) return;
+  const spending = loadData('spending');
+  if (spending.length) {
+    const tx = getTransactions();
+    spending.forEach(s => { if (!s.id) s.id = genId(); tx.push({id:s.id, type:'expense', amount:Number(s.amount)||0, accountId:null, cat:s.cat, note:s.note, date:s.date, createdAt:new Date().toISOString(), legacy:true}); });
+    saveTransactions(tx);
+    saveData('spending', spending.map(s => { if (!s.id) s.id = genId(); return s; }));
+  }
+  saveData('spending_migrated', true);
+}
+
+function getBudget(month) { return Number(loadData('budget_' + month)) || 0; }
+function setMonthlyBudget() {
+  const month = (viewDate || getToday()).slice(0, 7);
+  const v = parseFloat(document.getElementById('spendBudget').value) || 0;
+  saveData('budget_' + month, v);
+  renderSpending();
+  if (currentPage === 'finance') renderBookkeeping();
 }
 
 function renderSpending() {
-  const allRecords = loadData('spending');
-  const records = allRecords.filter(r => r.date === viewDate);
-  const thisDate = viewDate;
-  const now = new Date();
-  const thisMonth = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;
-  const todayTotal = records.reduce((s,r) => s + r.amount, 0);
-  const monthTotal = allRecords.filter(r => r.date && r.date.startsWith(thisMonth)).reduce((s,r) => s + r.amount, 0);
+  initBookkeeping();
+  migrateSpendingToTransactions();
+  const tx = getTransactions();
+  const month = (viewDate || '').slice(0, 7);
+  const todayTx = tx.filter(t => t.type === 'expense' && t.date === viewDate);
+  const monthExpense = tx.filter(t => t.type === 'expense' && t.date && t.date.startsWith(month)).reduce((s,t) => s + (Number(t.amount) || 0), 0);
+  const monthIncome = tx.filter(t => t.type === 'income' && t.date && t.date.startsWith(month)).reduce((s,t) => s + (Number(t.amount) || 0), 0);
+  const budget = getBudget(month);
+  const budgetLeft = budget - monthExpense;
+  const netBalance = monthIncome - monthExpense;
   const summary = document.getElementById('spendingSummary');
   if (summary) {
     summary.innerHTML = `
-      <div class="spending-stat"><div class="ss-val">¥${todayTotal.toFixed(2)}</div><div class="ss-label">${thisDate} 开销</div></div>
-      <div class="spending-stat"><div class="ss-val">¥${monthTotal.toFixed(2)}</div><div class="ss-label">本月累计开销</div></div>
+      <div class="spending-stat"><div class="ss-val">¥${monthExpense.toFixed(2)}</div><div class="ss-label">本月支出</div></div>
+      <div class="spending-stat"><div class="ss-val">¥${budgetLeft.toFixed(2)}</div><div class="ss-label">预算剩余</div></div>
+      <div class="spending-stat"><div class="ss-val">¥${netBalance.toFixed(2)}</div><div class="ss-label">本月净结余</div></div>
+      <div class="spending-stat" style="background:linear-gradient(135deg,var(--accent-soft),#fff);">
+        <div class="ss-val" style="font-size:13px;font-weight:700;"><input id="spendBudget" type="number" value="${budget}" placeholder="设预算" style="width:64px;padding:2px 4px;font-size:13px;border:1px solid var(--pink-light);border-radius:6px;" onchange="setMonthlyBudget()"></div>
+        <div class="ss-label">本月预算</div>
+      </div>
     `;
+  }
+  const accSel = document.getElementById('spendAccount');
+  if (accSel) {
+    const accounts = getAccounts();
+    accSel.innerHTML = '<option value="">扣款账户</option>' + accounts.map(a => `<option value="${a.id}">${a.icon || '💰'} ${escapeHtml(a.name)}</option>`).join('');
   }
   const table = document.getElementById('spendingTable');
   if (!table) return;
-  if (!records.length) {
-    table.innerHTML = '<div class="empty-hint">💸 该日期还没有消费记录呢~</div>';
+  if (!todayTx.length) {
+    table.innerHTML = '<div class="empty-hint">💸 今天还没有消费记录呢~</div>';
     return;
   }
+  const accounts = getAccounts();
   table.innerHTML = `
-    <thead><tr><th>时间</th><th>类目</th><th class="amount">金额</th><th>备注</th><th></th></tr></thead>
-    <tbody>${records.slice().reverse().map(r => `
-      <tr>
-        <td>${r.time || ''}</td>
-        <td>${escapeHtml(r.cat)}</td>
-        <td class="amount">¥${r.amount.toFixed(2)}</td>
-        <td>${escapeHtml(r.note || '')}</td>
-        <td><button class="btn btn-danger btn-xs" onclick="delSpending('${r.id}')">删除</button></td>
-      </tr>
-    `).join('')}</tbody>
+    <thead><tr><th>类目</th><th>账户</th><th class="amount">金额</th><th>备注</th><th></th></tr></thead>
+    <tbody>${todayTx.slice().reverse().map(t => {
+      const acc = accounts.find(a => a.id === t.accountId);
+      return `<tr>
+        <td>${escapeHtml(t.cat || '记账')}</td>
+        <td>${acc ? (acc.icon || '') + ' ' + escapeHtml(acc.name) : '—'}</td>
+        <td class="amount">¥${(Number(t.amount) || 0).toFixed(2)}</td>
+        <td>${escapeHtml(t.note || '')}</td>
+        <td><button class="btn btn-danger btn-xs" onclick="delSpending('${t.id}')">删除</button></td>
+      </tr>`;
+    }).join('')}</tbody>
   `;
 }
 
 function delSpending(id) {
-  let all = loadData('spending');
-  all = all.filter(r => r.id !== id);
-  saveData('spending', all);
+  delTransaction(id);
   renderSpending();
 }
 
@@ -1853,42 +2036,64 @@ function renderGrowthTasks() {
 }
 
 // --- FINANCE ---
+let financeStatsTab = 'month';
+
 function renderFinance() {
-  const goals = loadData('finance_goals');
-  const totalGoal = goals.reduce((s,g) => s + (g.target || 0), 0);
-  const totalSaved = goals.reduce((s,g) => s + (g.saved || 0), 0);
   return `
     <div class="card">
-      <div class="card-title"><span class="ct-icon">🎯</span> 存钱目标</div>
-      <div class="spending-summary">
-        <div class="spending-stat"><div class="ss-val">¥${totalSaved.toFixed(0)}</div><div class="ss-label">已存</div></div>
-        <div class="spending-stat"><div class="ss-val">¥${totalGoal.toFixed(0)}</div><div class="ss-label">目标</div></div>
+      <div class="card-title"><span class="ct-icon">📊</span> 消费统计</div>
+      <div class="fs-tabs">
+        <button class="fs-tab${financeStatsTab==='week'?' active':''}" onclick="setFinanceStatsTab('week')">本周</button>
+        <button class="fs-tab${financeStatsTab==='month'?' active':''}" onclick="setFinanceStatsTab('month')">本月</button>
+        <button class="fs-tab${financeStatsTab==='year'?' active':''}" onclick="setFinanceStatsTab('year')">本年</button>
       </div>
-      <div class="task-input-row">
-        <input type="text" id="goalName" placeholder="目标名称..." style="flex:1;">
-        <input type="number" id="goalTarget" placeholder="目标金额" min="0" style="flex:0 0 100px;">
-        <button class="btn btn-primary" onclick="addFinanceGoal()">+ 添加</button>
-      </div>
-      <div id="financeGoalList"></div>
+      <div id="financeStatsBox"></div>
     </div>
     <div class="card">
-      <div class="card-title"><span class="ct-icon">📒</span> 理财笔记</div>
-      <textarea id="financeNote" placeholder="记下你的理财心得..."></textarea>
-      <div class="img-upload-area" id="financeImgUpload">
-        <button class="img-upload-btn">📷 添加图片</button>
+      <div class="card-title"><span class="ct-icon">💰</span> 记账</div>
+      <div class="bk-total-card">
+        <div class="bk-total-label">总资产</div>
+        <div class="bk-total-val" id="bkTotalAsset">¥0.00</div>
       </div>
-      <div class="mt-8 flex gap-8">
-        <button class="btn btn-primary" onclick="saveFinanceNote()">💾 保存笔记</button>
+      <div class="bk-summary-row">
+        <div class="bk-summary-item"><div class="bk-si-val" id="bkYearIncome">+0.00</div><div class="bk-si-label">本年累计收入</div></div>
+        <div class="bk-summary-item"><div class="bk-si-val" id="bkYearExpense">-0.00</div><div class="bk-si-label">本年累计支出</div></div>
+        <div class="bk-summary-item"><div class="bk-si-val" id="bkYearBalance">+0.00</div><div class="bk-si-label">累计结余</div></div>
       </div>
-      <div id="financeNoteList" class="mt-12"></div>
-    </div>
-    <div class="card">
-      <div class="card-title"><span class="ct-icon">📚</span> 学习打卡</div>
-      <div class="task-input-row">
-        <input type="text" id="studyTaskInput" placeholder="学习任务...">
-        <button class="btn btn-primary" onclick="addStudyTask()">+ 添加</button>
+      <div class="flex gap-8 flex-wrap" style="margin-bottom:12px;">
+        <button class="btn btn-primary" onclick="openTransactionForm()">📝 记一笔</button>
+        <button class="btn btn-secondary" onclick="openAccountForm()">🏦 管理账户</button>
       </div>
-      <ul class="task-list" id="studyTaskList"></ul>
+      <div id="bkTransactionForm" style="display:none;">
+        <div class="bk-form-row">
+          <select id="bkTransType" style="flex:0 0 80px;"><option value="expense">支出</option><option value="income">收入</option></select>
+          <input type="number" id="bkTransAmount" placeholder="金额" min="0" step="0.01" style="flex:1;min-width:90px;">
+          <select id="bkTransCategory" style="flex:1;min-width:110px;"><option value="">选择分类</option>${SPENDING_CATEGORIES.map(c=>`<option value="${c}">${c}</option>`).join('')}</select>
+          <select id="bkTransAccount" style="flex:1;min-width:100px;"></select>
+          <input type="date" id="bkTransDate" style="flex:0 0 130px;">
+          <input type="text" id="bkTransNote" placeholder="备注（可选）" style="flex:1;min-width:100px;">
+        </div>
+        <div class="flex gap-8 mt-8">
+          <button class="btn btn-primary" onclick="addTransaction()">保存</button>
+          <button class="btn btn-secondary" onclick="closeTransactionForm()">取消</button>
+        </div>
+      </div>
+      <div id="bkAccountForm" style="display:none;">
+        <div class="bk-form-row">
+          <input type="text" id="bkAccountName" placeholder="账户名称" style="flex:1;min-width:90px;">
+          <input type="text" id="bkAccountIcon" placeholder="图标，如💰" style="flex:0 0 100px;">
+          <input type="number" id="bkAccountBalance" placeholder="当前余额" min="0" step="0.01" style="flex:1;min-width:90px;">
+        </div>
+        <div class="flex gap-8 mt-8">
+          <button class="btn btn-primary" onclick="addAccount()">添加账户</button>
+          <button class="btn btn-secondary" onclick="closeAccountForm()">取消</button>
+        </div>
+      </div>
+      <div class="sub-section-title" style="margin-top:14px;"><span>🏦</span> 账户余额</div>
+      <div id="bkAccountList"></div>
+      <div class="section-divider"></div>
+      <div class="sub-section-title"><span>📜</span> 近期流水</div>
+      <div id="bkTransactionList"></div>
     </div>
   `;
 }
@@ -1982,33 +2187,260 @@ function delFinanceNote(id) {
   renderFinanceNotes();
 }
 
-function addStudyTask() {
-  const input = document.getElementById('studyTaskInput');
-  const text = input.value.trim();
-  if (!text) return;
-  const tasks = loadData('study_tasks');
-  tasks.push({id:genId(),text,done:false});
-  saveData('study_tasks', tasks);
-  input.value = '';
-  renderStudyTasks();
+// --- FINANCE STATS ---
+const FS_COLORS = ['#f472b6','#fb923c','#facc15','#4ade80','#60a5fa','#a78bfa','#f87171','#2dd4bf','#c084fc'];
+function setFinanceStatsTab(tab) { financeStatsTab = tab; renderFinanceStats(); }
+function getCategoryColor(i) { return FS_COLORS[i % FS_COLORS.length]; }
+function getFinanceStatsRange(tab) {
+  const now = new Date();
+  const today = getToday();
+  let start, end, label;
+  if (tab === 'week') {
+    const d = new Date();
+    const day = d.getDay() || 7;
+    const mon = new Date(d); mon.setDate(d.getDate() - day + 1);
+    start = formatDate(mon); end = today; label = `${start} ~ ${end}`;
+  } else if (tab === 'month') {
+    const y = now.getFullYear(), m = now.getMonth() + 1;
+    start = `${y}-${String(m).padStart(2,'0')}-01`; end = today;
+    label = `${y}年${m}月`;
+  } else {
+    const y = now.getFullYear();
+    start = `${y}-01-01`; end = today;
+    label = `${y}年`;
+  }
+  return {start, end, label};
+}
+function formatDate(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function inDateRange(dateStr, start, end) {
+  if (!dateStr) return false;
+  return dateStr >= start && dateStr <= end;
+}
+function renderFinanceStats() {
+  const box = document.getElementById('financeStatsBox');
+  if (!box) return;
+  const {start, end, label} = getFinanceStatsRange(financeStatsTab);
+  const tx = getTransactions().filter(t => t.type === 'expense' && inDateRange(t.date, start, end));
+  const total = tx.reduce((s,t) => s + (Number(t.amount) || 0), 0);
+  if (!total) { box.innerHTML = `<div class="fs-range">${label}</div><div class="fs-empty">这段时间还没有支出记录哦~</div>`; return; }
+  const map = {};
+  tx.forEach(t => { const c = t.cat || '未分类'; map[c] = (map[c] || 0) + (Number(t.amount) || 0); });
+  let arr = Object.entries(map).map(([name, amount]) => ({name, amount})).sort((a,b) => b.amount - a.amount);
+  const top = arr.slice(0, 6);
+  const other = arr.slice(6);
+  if (other.length) { top.push({name:'其他', amount: other.reduce((s,o) => s + o.amount, 0)}); }
+  const data = top.map((d,i) => ({...d, color: getCategoryColor(i), pct: total ? (d.amount/total*100).toFixed(1) : 0}));
+  const donut = renderDonutChart(data, total);
+  const legend = data.map(d => `
+    <div class="fs-legend-item">
+      <span class="fs-legend-dot" style="background:${d.color}"></span>
+      <span class="fs-legend-name">${escapeHtml(d.name)}</span>
+      <span class="fs-legend-amount">¥${d.amount.toFixed(2)}</span>
+      <span class="fs-legend-pct">${d.pct}%</span>
+    </div>
+  `).join('');
+  box.innerHTML = `
+    <div class="fs-range">${label}</div>
+    <div class="fs-total"><div class="fs-total-label">总支出</div><div class="fs-total-val">¥${total.toFixed(2)}</div></div>
+    <div class="fs-chart-wrap">
+      <div class="fs-donut">${donut}<div class="fs-donut-center"><span class="fs-dc-label">支出</span><span class="fs-dc-val">${data.length}类</span></div></div>
+      <div class="fs-legend">${legend}</div>
+    </div>
+  `;
+}
+function renderDonutChart(data, total) {
+  const r = 54, c = 60, thickness = 16;
+  let acc = 0;
+  const circles = data.map(d => {
+    const pct = total ? d.amount / total : 0;
+    const dash = 2 * Math.PI * r * pct;
+    const gap = 2 * Math.PI * r * (1 - pct);
+    const offset = -2 * Math.PI * r * acc;
+    acc += pct;
+    return `<circle cx="${c}" cy="${c}" r="${r}" fill="none" stroke="${d.color}" stroke-width="${thickness}" stroke-dasharray="${dash} ${gap}" stroke-dashoffset="${offset}" stroke-linecap="round"/>`;
+  }).join('');
+  return `<svg viewBox="0 0 120 120">${circles}</svg>`;
 }
 
-function renderStudyTasks() {
-  const tasks = loadData('study_tasks');
-  const list = document.getElementById('studyTaskList');
-  if (!list) return;
-  if (!tasks.length) { list.innerHTML = '<div class="empty-hint">📚 添加学习任务吧~</div>'; return; }
-  list.innerHTML = tasks.map(t => `
-    <li class="task-item${t.done ? ' done' : ''}" draggable="true" data-id="${t.id}">
-      <span class="task-drag-handle">⠿</span>
-      <span class="task-check" data-toggle="${t.id}">✓</span>
-      <span class="task-text">${escapeHtml(t.text)}</span>
-      <button class="task-del" data-del="${t.id}">×</button>
-    </li>
+// --- BOOKKEEPING ---
+function initBookkeeping() {
+  if (loadData('accounts').length === 0) {
+    const defaults = [
+      {id:genId(), name:'现金', icon:'💵', balance:0},
+      {id:genId(), name:'微信', icon:'💚', balance:0},
+      {id:genId(), name:'支付宝', icon:'💙', balance:0},
+      {id:genId(), name:'银行卡', icon:'🏦', balance:0}
+    ];
+    saveData('accounts', defaults);
+  }
+}
+
+function getAccounts() { return loadData('accounts'); }
+function saveAccounts(arr) { saveData('accounts', arr); }
+function getTransactions() { return loadData('transactions'); }
+function saveTransactions(arr) { saveData('transactions', arr); }
+
+function renderBookkeeping() {
+  initBookkeeping();
+  renderFinanceStats();
+  const accounts = getAccounts();
+  const transactions = getTransactions();
+  const totalAsset = accounts.reduce((s,a)=>s+(a.balance||0),0);
+  const year = new Date().getFullYear();
+  const yearIncome = transactions.filter(t=>t.type==='income' && t.date && t.date.startsWith(String(year))).reduce((s,t)=>s+(t.amount||0),0);
+  const yearExpense = transactions.filter(t=>t.type==='expense' && t.date && t.date.startsWith(String(year))).reduce((s,t)=>s+(t.amount||0),0);
+  const yearBalance = yearIncome - yearExpense;
+
+  const totalEl = document.getElementById('bkTotalAsset');
+  if (totalEl) totalEl.textContent = '¥' + totalAsset.toFixed(2);
+  const incEl = document.getElementById('bkYearIncome');
+  if (incEl) incEl.textContent = '+' + yearIncome.toFixed(2);
+  const expEl = document.getElementById('bkYearExpense');
+  if (expEl) expEl.textContent = '-' + yearExpense.toFixed(2);
+  const balEl = document.getElementById('bkYearBalance');
+  if (balEl) balEl.textContent = (yearBalance >= 0 ? '+' : '') + yearBalance.toFixed(2);
+
+  renderAccountList();
+  renderTransactionList();
+  renderTransactionAccountOptions();
+}
+
+function renderAccountList() {
+  const container = document.getElementById('bkAccountList');
+  if (!container) return;
+  const accounts = getAccounts();
+  if (!accounts.length) { container.innerHTML = '<div class="empty-hint">还没有账户~</div>'; return; }
+  container.innerHTML = accounts.map(a => `
+    <div class="bk-account-row">
+      <span class="bk-account-icon">${a.icon || '💰'}</span>
+      <span class="bk-account-name">${escapeHtml(a.name)}</span>
+      <span class="bk-account-balance">¥${(a.balance||0).toFixed(2)}</span>
+      <button class="btn btn-secondary btn-sm" onclick="adjustAccount('${a.id}')">调整余额</button>
+      <button class="btn btn-danger btn-sm" onclick="delAccount('${a.id}')">删除</button>
+    </div>
   `).join('');
-  enableDragSort(list, tasks, 'study_tasks', renderStudyTasks);
-  setupTaskToggle('studyTaskList', tasks, 'study_tasks', renderStudyTasks);
-  setupTaskDelete('studyTaskList', tasks, 'study_tasks', renderStudyTasks);
+}
+
+function renderTransactionList() {
+  const container = document.getElementById('bkTransactionList');
+  if (!container) return;
+  const transactions = getTransactions().slice().reverse();
+  if (!transactions.length) { container.innerHTML = '<div class="empty-hint">还没有流水记录~</div>'; return; }
+  container.innerHTML = transactions.map(t => {
+    const acc = getAccounts().find(a=>a.id===t.accountId);
+    return `
+    <div class="bk-trans-row">
+      <span class="bk-trans-date">${t.date || ''}</span>
+      <span class="bk-trans-type ${t.type}">${t.type==='income'?'收入':'支出'}</span>
+      <span class="bk-trans-account">${acc ? (acc.icon||'') + ' ' + escapeHtml(acc.name) : '未知账户'}</span>
+      ${t.type==='expense' && t.cat ? `<span class="bk-trans-note" style="background:var(--pink-light);color:var(--pink-deep);padding:2px 8px;border-radius:8px;font-size:11px;">${escapeHtml(t.cat)}</span>` : ''}
+      <span class="bk-trans-note">${escapeHtml(t.note || '')}</span>
+      <span class="bk-trans-amount ${t.type}">${t.type==='income'?'+':'-'}¥${(t.amount||0).toFixed(2)}</span>
+      <button class="btn btn-danger btn-xs" onclick="delTransaction('${t.id}')">删除</button>
+    </div>
+  `}).join('');
+}
+
+function renderTransactionAccountOptions() {
+  const sel = document.getElementById('bkTransAccount');
+  if (!sel) return;
+  const accounts = getAccounts();
+  sel.innerHTML = accounts.map(a=>`<option value="${a.id}">${a.icon||'💰'} ${escapeHtml(a.name)}</option>`).join('');
+}
+
+function openTransactionForm() {
+  const el = document.getElementById('bkTransactionForm');
+  if (!el) return;
+  el.style.display = 'block';
+  document.getElementById('bkTransDate').value = getToday();
+  renderTransactionAccountOptions();
+  const catSel = document.getElementById('bkTransCategory');
+  if (catSel) catSel.value = '';
+  document.getElementById('bkTransAmount').value = '';
+  document.getElementById('bkTransNote').value = '';
+}
+function closeTransactionForm() { const el = document.getElementById('bkTransactionForm'); if(el) el.style.display='none'; }
+function openAccountForm() { const el = document.getElementById('bkAccountForm'); if(el) el.style.display='block'; }
+function closeAccountForm() { const el = document.getElementById('bkAccountForm'); if(el) el.style.display='none'; }
+
+function addTransaction() {
+  const type = document.getElementById('bkTransType').value;
+  const amount = parseFloat(document.getElementById('bkTransAmount').value);
+  const category = document.getElementById('bkTransCategory').value;
+  const accountId = document.getElementById('bkTransAccount').value;
+  const date = document.getElementById('bkTransDate').value;
+  const note = document.getElementById('bkTransNote').value.trim();
+  if (!amount || amount <= 0 || !accountId) { alert('请填写金额并选择账户~'); return; }
+  if (type === 'expense' && !category) { alert('请选择支出分类~'); return; }
+  const accounts = getAccounts();
+  const acc = accounts.find(a=>a.id===accountId);
+  if (!acc) return;
+  if (type === 'expense') acc.balance = (acc.balance || 0) - amount;
+  else acc.balance = (acc.balance || 0) + amount;
+  saveAccounts(accounts);
+  const transactions = getTransactions();
+  transactions.push({id:genId(), type, amount, accountId, cat: type==='expense' ? category : '', date: date || getToday(), note, createdAt: new Date().toISOString()});
+  saveTransactions(transactions);
+  closeTransactionForm();
+  renderBookkeeping();
+}
+
+function delTransaction(id) {
+  const transactions = getTransactions();
+  const idx = transactions.findIndex(t=>t.id===id);
+  if (idx === -1) return;
+  const t = transactions[idx];
+  const accounts = getAccounts();
+  const acc = accounts.find(a=>a.id===t.accountId);
+  if (acc) {
+    if (t.type === 'expense') acc.balance = (acc.balance || 0) + t.amount;
+    else acc.balance = (acc.balance || 0) - t.amount;
+    saveAccounts(accounts);
+  }
+  transactions.splice(idx,1);
+  saveTransactions(transactions);
+  renderBookkeeping();
+}
+
+function addAccount() {
+  const name = document.getElementById('bkAccountName').value.trim();
+  const icon = document.getElementById('bkAccountIcon').value.trim() || '💰';
+  const balance = parseFloat(document.getElementById('bkAccountBalance').value) || 0;
+  if (!name) { alert('请填写账户名称~'); return; }
+  const accounts = getAccounts();
+  accounts.push({id:genId(), name, icon, balance});
+  saveAccounts(accounts);
+  document.getElementById('bkAccountName').value='';
+  document.getElementById('bkAccountIcon').value='';
+  document.getElementById('bkAccountBalance').value='';
+  closeAccountForm();
+  renderBookkeeping();
+}
+
+function delAccount(id) {
+  if (!confirm('删除账户会同时清空相关流水，确定吗？')) return;
+  let accounts = getAccounts();
+  accounts = accounts.filter(a=>a.id!==id);
+  saveAccounts(accounts);
+  let transactions = getTransactions();
+  transactions = transactions.filter(t=>t.accountId!==id);
+  saveTransactions(transactions);
+  renderBookkeeping();
+}
+
+function adjustAccount(id) {
+  const accounts = getAccounts();
+  const acc = accounts.find(a=>a.id===id);
+  if (!acc) return;
+  const newBal = prompt('调整「' + acc.name + '」的当前余额：', (acc.balance || 0).toFixed(2));
+  if (newBal === null) return;
+  const v = parseFloat(newBal);
+  if (isNaN(v)) { alert('请输入数字'); return; }
+  acc.balance = v;
+  saveAccounts(accounts);
+  renderBookkeeping();
 }
 
 // --- TRAVEL ---
@@ -2890,32 +3322,8 @@ function renderPage() {
       renderBackupReminderInfo();
       break;
     case 'finance':
-      renderFinanceGoals();
-      renderFinanceNotes();
-      renderStudyTasks();
-      createImageUpload('financeImgUpload', (imgs) => {
-        if (imgs === null) return financePendingImages;
-        financePendingImages = imgs;
-        const previewArea = document.querySelector('#financeImgUpload');
-        if (previewArea) {
-          previewArea.querySelectorAll('.img-preview-wrap').forEach(el => el.remove());
-          renderImagePreviews(imgs, previewArea);
-        }
-        setTimeout(() => {
-          document.querySelectorAll('[data-remove-img]').forEach(btn => {
-            btn.addEventListener('click', function() {
-              const idx = parseInt(this.dataset.removeImg);
-              financePendingImages.splice(idx, 1);
-              const pa = document.querySelector('#financeImgUpload');
-              if (pa) {
-                pa.querySelectorAll('.img-preview-wrap').forEach(el => el.remove());
-                renderImagePreviews(financePendingImages, pa);
-              }
-            });
-          });
-        }, 50);
-        return financePendingImages;
-      });
+      initBookkeeping();
+      renderBookkeeping();
       break;
     case 'travel':
       renderTravelPlans();
