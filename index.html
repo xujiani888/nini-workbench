@@ -2418,9 +2418,15 @@ function renderBackup() {
       <div class="flex gap-8 flex-wrap">
         <button class="btn btn-primary" onclick="exportAllData()">⬇️ 导出全部(JSON)</button>
         <button class="btn btn-secondary" onclick="exportAllCsv()">📊 导出为 Excel(CSV)</button>
-        <button class="btn btn-secondary" onclick="document.getElementById('importFileInput').click()">⬆️ 导入恢复</button>
+        <button class="btn btn-secondary" onclick="copyAllDataText()">📋 复制全部数据(文本)</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('importFileInput').click()">⬆️ 导入恢复(文件)</button>
         <input type="file" id="importFileInput" accept="application/json,.json" style="display:none;" onchange="importDataFromFile(this)">
       </div>
+      <details class="bk-paste" style="margin-top:10px;font-size:13px;color:var(--text-secondary);">
+        <summary style="cursor:pointer;">📥 或从文本粘贴导入（适合手机↔电脑直接复制搬运）</summary>
+        <textarea id="pasteImportArea" class="bk-textarea" style="width:100%;min-height:90px;margin:8px 0;border:1px solid var(--pink-light);border-radius:10px;padding:8px;font-family:monospace;font-size:12px;resize:vertical;box-sizing:border-box;" placeholder="把另一台设备上「复制全部数据(文本)」得到的内容粘贴到这里，再点导入…"></textarea>
+        <button class="btn btn-secondary" onclick="importDataFromText()">导入文本</button>
+      </details>
       <div class="sub-section" style="margin-top:16px;">
         <div class="sub-section-title"><span>⏰</span> 定时备份提醒</div>
         <p class="text-muted" style="margin-bottom:10px;">开启后，超过设定周期未备份时会自动弹窗提醒你，避免数据丢失。</p>
@@ -2582,6 +2588,36 @@ function importDataFromFile(input) {
   };
   reader.readAsText(file);
   input.value = '';
+}
+
+function copyAllDataText() {
+  const data = {};
+  Object.keys(localStorage).filter(k => k.startsWith('nini_')).forEach(k => { data[k] = localStorage.getItem(k); });
+  if (Object.keys(data).length === 0) { toast('暂时没有可导出的数据'); return; }
+  const payload = { app:'nini-workbench', version:1, exportedAt:new Date().toISOString(), data };
+  const text = JSON.stringify(payload);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(()=>toast('📋 已复制全部数据，去另一台设备粘贴导入即可')).catch(()=>fallbackCopy(text));
+  } else { fallbackCopy(text); }
+}
+
+function importDataFromText() {
+  const ta = document.getElementById('pasteImportArea');
+  if (!ta) return;
+  const raw = (ta.value || '').trim();
+  if (!raw) { toast('请先粘贴数据文本'); return; }
+  try {
+    const payload = JSON.parse(raw);
+    const data = (payload && payload.data) ? payload.data : payload;
+    let n = 0;
+    Object.keys(data).forEach(k => {
+      if (typeof data[k] === 'string' && k.startsWith('nini_')) { localStorage.setItem(k, data[k]); n++; }
+    });
+    if (n === 0) { toast('⚠️ 文本中没有可恢复的数据'); return; }
+    updateBackupTimestamp();
+    toast('✅ 已恢复 ' + n + ' 项数据，正在刷新…');
+    setTimeout(() => { renderNav(); renderPage(); }, 600);
+  } catch(e) { toast('⚠️ 文本格式不正确，导入失败'); }
 }
 
 let otherPendingImages = [];
